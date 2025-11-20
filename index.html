@@ -249,6 +249,112 @@
             height: auto;
         }
 
+        /* Accessibility Widget */
+        .accessibility-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #005a8f;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 90, 143, 0.4);
+            z-index: 1000;
+        }
+
+        .accessibility-panel {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            width: 260px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            padding: 20px;
+            z-index: 999;
+            border: 2px solid #0090cd;
+            display: none;
+        }
+
+        .accessibility-panel.active {
+            display: block;
+        }
+
+        .accessibility-panel h4 {
+            margin-bottom: 15px;
+            color: #0090cd;
+            font-size: 1.2rem;
+        }
+
+        .accessibility-panel button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #00a0e4;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .accessibility-panel button:last-child {
+            margin-bottom: 0;
+        }
+
+        body.high-contrast {
+            background: #000;
+            color: #fff;
+        }
+
+        body.high-contrast .services,
+        body.high-contrast .contact-card {
+            background: #111 !important;
+            color: #fff !important;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .whatsapp-label {
+            position: fixed;
+            left: 25px;
+            bottom: 100px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            z-index: 1000;
+        }
+
         /* Animations */
         @keyframes fadeInDown {
             from {
@@ -322,6 +428,23 @@
     </style>
 </head>
 <body>
+    <div class="accessibility-toggle" aria-label="תפריט נגישות">
+        ♿
+    </div>
+    <div class="accessibility-panel" aria-live="polite">
+        <h4>תפריט נגישות</h4>
+        <button data-action="increase-font">הגדל טקסט</button>
+        <button data-action="decrease-font">הקטן טקסט</button>
+        <button data-action="toggle-contrast">מצב ניגודיות</button>
+    </div>
+
+    <a class="whatsapp-float" href="https://wa.me/97246334455?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%AA%D7%95%D7%A8" target="_blank" aria-label="שליחת הודעת ווטסאפ">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.819.734 5.437 2.012 7.72L0 32l8.51-2.235A15.892 15.892 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.091c-2.6 0-5.013-.757-7.046-2.06l-.505-.32-5.041 1.325 1.348-4.918-.329-.505A12.834 12.834 0 0 1 3.273 16C3.273 8.945 8.945 3.273 16 3.273S28.727 8.945 28.727 16 23.055 28.727 16 28.727zm7.482-9.056c-.41-.205-2.42-1.193-2.795-1.329-.375-.137-.648-.205-.92.205-.273.41-1.057 1.329-1.295 1.602-.239.273-.478.307-.888.102-.41-.205-1.732-.64-3.297-2.041-1.219-1.087-2.041-2.426-2.279-2.836-.239-.41-.025-.631.18-.836.184-.183.41-.478.614-.716.205-.239.273-.41.41-.683.137-.273.068-.512-.034-.716-.102-.205-.92-2.221-1.261-3.04-.332-.797-.671-.688-.92-.702-.238-.013-.512-.016-.785-.016-.273 0-.716.102-1.09.512-.375.41-1.422 1.39-1.422 3.39s1.458 3.935 1.662 4.21c.205.273 2.873 4.385 6.96 6.149.974.42 1.733.67 2.325.859.977.311 1.865.268 2.57.162.784-.117 2.42-.99 2.762-1.943.341-.953.341-1.771.239-1.943-.102-.171-.375-.273-.785-.478z"/>
+        </svg>
+    </a>
+    <div class="whatsapp-label">לקביעת תור</div>
+
     <div class="container">
         <header class="header">
             <div class="logo">
@@ -388,7 +511,7 @@
                 <div class="contact-info">
                     <p><a href="tel:046334455">04-6334455</a></p>
                     <p><a href="mailto:drmotis@gmail.com">drmotis@gmail.com</a></p>
-                    <p>רחוב הלל יפה 40, חדרה</p>
+                    <p><a class="badge" style="display:inline-block;margin-top:10px;padding:10px 20px;border-radius:30px;background:white;color:#0090cd;" href="https://wa.me/97246334455?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%AA%D7%95%D7%A8" target="_blank">לחץ לקביעת תור</a></p>
                 </div>
             </div>
 
@@ -399,7 +522,55 @@
                     <p>08:00 AM - 10:00 PM</p>
                 </div>
             </div>
+
+            <div class="contact-card">
+                <h3>צוות המרפאה</h3>
+                <div class="contact-info">
+                    <p>נשיא: ד״ר מ. שגב</p>
+                    <p>יו״ר: ד״ר אבישי שגב</p>
+                    <p>מויישי זוכמיר</p>
+                    <p>רבקה שלוזוביץ</p>
+                </div>
+            </div>
+
+            <div class="contact-card" style="padding:0; overflow:hidden;">
+                <div style="padding:40px;">
+                    <h3>דרכי הגעה</h3>
+                    <p style="margin-top:10px;font-size:1.1rem;">הלל יפה 40, חדרה</p>
+                </div>
+                <iframe title="מרפאת שיניים ד״ר מרדכי שגב" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.8841429999997!2d34.917!3d32.444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xec59fab3e4fb7c4!2z157XkNeW16jXldeqINeU157XqiAtINeU15HXoteQINeZ15LXmdek!5e0!3m2!1siw!2sil!4v1732100000000!5m2!1siw!2sil" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </section>
     </div>
+
+    <script>
+        const toggle = document.querySelector('.accessibility-toggle');
+        const panel = document.querySelector('.accessibility-panel');
+        const body = document.body;
+        let currentFontSize = 100;
+
+        toggle.addEventListener('click', () => {
+            panel.classList.toggle('active');
+        });
+
+        panel.addEventListener('click', (event) => {
+            if (!event.target.dataset.action) return;
+            const action = event.target.dataset.action;
+
+            if (action === 'increase-font' && currentFontSize < 140) {
+                currentFontSize += 10;
+                body.style.fontSize = currentFontSize + '%';
+            }
+
+            if (action === 'decrease-font' && currentFontSize > 80) {
+                currentFontSize -= 10;
+                body.style.fontSize = currentFontSize + '%';
+            }
+
+            if (action === 'toggle-contrast') {
+                body.classList.toggle('high-contrast');
+            }
+        });
+    </script>
 </body>
 </html>
